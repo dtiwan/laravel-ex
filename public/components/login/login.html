@@ -1,0 +1,150 @@
+<section class="engine"><a rel="external" href="http://appraisalguru.io">AppraisalGuru</a></section><section class="mbr-section mbr-section--relative mbr-section--fixed-size mbr-after-navbar" id="form1-27" style="background-color: rgb(239, 239, 239);">
+    
+    <div class="mbr-section__container mbr-section__container--std-padding container" style="padding-top: 93px; padding-bottom: 93px;">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-4" data-form-type="formoid">
+                        <div data-form-alert="true">
+                            <div class="hide" data-form-alert-success="true">Thanks for filling out form!</div>
+                        </div>
+                            <div class="container">    
+        <div id="loginbox" style="margin-top:50px;" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">                    
+            <div class="panel panel-info" >
+                    <div class="panel-heading">
+                        <div class="panel-title">Log In</div>
+                        <div style="float:right; font-size: 80%; position: relative; top:-10px"><a ui-sref="home.forgotPassword">Forgot password?</a></div>
+                    </div>     
+
+                    <div style="padding-top:30px" class="panel-body" >
+
+                        <div style="display:none" id="login-alert" class="alert alert-danger col-sm-12"></div>
+                            
+                        <form id="loginform" name="loginform"  class="form-horizontal" role="form">
+                                <div id="signupalert" ng-show="loginalert != null" class="alert alert-danger">
+                                    <span>{{ loginalert }}</span>
+                                </div>
+                            <div class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-user"></i></span>
+                                        <input id="login-username" type="email" class="form-control" name="loginemail" ng-model="logindata.email" value="" placeholder="Email" required>  
+                                                                          
+                                    </div>
+                                    <div ng-messages="loginform.loginemail.$error" ng-show="loginform.loginemail.$touched" class="error">
+                                            <p ng-message="required">Your email is required.</p>
+                                            <p ng-message="email">This is not valid email.</p>
+                                        </div>      
+                                
+                            <div style="margin-top: 20px" class="input-group">
+                                        <span class="input-group-addon"><i class="glyphicon glyphicon-lock"></i></span>
+                                        <input id="login-password" type="password" class="form-control" name="loginpassword" ng-model="logindata.password" name="password" placeholder="password" ng-minlength="8" required>
+                                    </div>
+                                     <div ng-messages="loginform.loginpassword.$error" ng-show="loginform.loginpassword.$touched" class="error">
+                                            <p ng-message="required">Password is required.</p>
+                                            <p ng-message="minlength">Password must be at least 8 characters long</p>
+                                        </div>
+                          <!--   <div class="input-group">
+                                      <div class="checkbox">
+                                        <label>
+                                          <input id="login-remember" type="checkbox" name="remember" value="1"> Remember me
+                                        </label>
+                                      </div>
+                                    </div>
+ -->
+
+                                <div style="margin-top:20px" class="form-group">
+                                    <!-- Button -->
+
+                                    <div class="col-sm-12 controls">
+                                      <a id="btn-login"  ng-click="login()"  ng-disabled="$parent.signupform.$invalid" class="btn btn-success">Login  </a>
+
+                                    </div>
+                                </div>
+
+
+                                <div class="form-group">
+                                    <div class="col-md-12 control">
+                                        <div style="border-top: 1px solid#888; padding-top:15px; font-size:85%" >
+                                            Don't have an account! 
+                                        <a class="singupbutton" onClick="$('#loginbox').hide(); $('#signupbox').show()">
+                                            Sign Up Here
+                                        </a>
+                                        </div>
+                                    </div>
+                                </div>    
+                            </form>     
+                        </div>                     
+                    </div>  
+        </div>
+        <div id="signupbox" style="display:none; margin-top:50px" class="mainbox col-md-6 col-md-offset-3 col-sm-8 col-sm-offset-2">
+                    <div class="panel panel-info">
+                        <div class="panel-heading">
+                            <div class="panel-title">Sign Up</div>
+                            <div style="float:right; font-size: 85%; position: relative; top:-10px"><a id="signinlink" onclick="$('#signupbox').hide(); $('#loginbox').show()">Log In</a></div>
+                        </div>  
+                        <div class="panel-body" >
+                            <form id="signupform" name="signupform" class="form-horizontal" >
+
+                                <div id="signupalert" ng-show="singupalert != null" class="alert alert-danger">
+                                    <span>{{ singupalert }}</span>
+                                </div>
+                                <div class="form-group">
+                                    <label for="email" class="col-md-3 control-label">Email</label>
+                                    <div class="col-md-9">          
+                                        <input type="email" class="form-control" name="signupemail" ng-model="signupdata.email" placeholder="Email Address" required>
+                                        <div ng-messages="signupform.signupemail.$error" ng-show="signupform.signupemail.$touched" class="error">
+                                            <p ng-message="required">Your email is required.</p>
+                                            <p ng-message="email">This is not valid email.</p>
+                                        </div>  
+                                    </div>
+                                            
+                                </div>
+                                <div class="form-group">
+                                    <label for="firstname" class="col-md-3 control-label">Your Name</label>
+                                    <div class="col-md-9">
+                                        <input type="text" class="form-control" name="signupname" ng-model="signupdata.name" placeholder="Full Name" required>
+                                        <div ng-messages="signupform.signupname.$error" ng-show="signupform.signupname.$touched"  class="error">
+                                            <p ng-message="required">Your name is required.</p>
+                                        </div>
+                                    </div>
+                                    
+                                </div>
+                                <div class="form-group">
+                                    <label for="password" class="col-md-3 control-label">Password</label>
+                                    <div class="col-md-9">
+                                        <input type="password" class="form-control" name="signuppassword" placeholder="Password" ng-model="signupdata.password" ng-minlength="8" required>
+                                        <div ng-messages="signupform.signuppassword.$error" ng-show="signupform.signuppassword.$touched" class="error">
+                                            <p ng-message="required">Password is required.</p>
+                                            <p ng-message="minlength">Password must be at least 8 characters long</p>
+                                        </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                <div class="col-md-3"></div>
+                                <div class="col-md-9">
+                                    <div class="checkbox">
+                                        <input id="login-remember" type="checkbox" ng-change="itemsChecked()" name="terms" ng-model="termsOfService"><a target="_blank" ui-sref="home.termsOfService">Terms of service</a>
+                                      </div>
+                                      <div class="error">
+                                            <p  ng-show="!itemChecked">For signup you need to agree on terms of service.</p>
+                                         </div>
+                                    </div>
+                                </div>
+                                <div class="form-group">
+                                    <!-- Button -->                                        
+                                    <div class="col-md-offset-3 col-md-9">
+                                        <button id="btn-signup" ng-click="signUp()" type="submit" class="btn btn-info" ng-disabled="$parent.signupform.$invalid"><i class="icon-hand-right" ></i> &nbsp Sign Up</button>  
+                                    </div>
+                                </div>
+                                
+                            </form>
+                         </div>
+                    </div>
+         </div> 
+    </div>
+    
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</section>

@@ -1,0 +1,114 @@
+<section class="engine"><a rel="external" href="http://AppraisalGuru.io">AppraisalGuru</a></section><div id="msg-box2-1d" custom-code="true" class="mbr-after-navbar"><section class="mbr-section mbr-section--relative mbr-section--short-paddings mbr-after-navbar" style="background-image: url(assets/images/background.jpg);">
+    <div class="mbr-section__container mbr-section__container--isolated container" style="padding-top: 20px; padding-bottom: 40px;">
+        <div class="row">
+            <div class="mbr-box mbr-box--fixed mbr-box--adapted">
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__left col-sm-8">
+                    <div class="mbr-section__container">
+                        <div ng-if="!details.similarPropertyFound" class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <h4 class="propertyNofound">Sorry! It seems like you are one of the lowest appraised property amongst similar properties in your neighborhood and would not have much of a case to protest.</h4>
+                            <div class="mbr-buttons btn-inverse mbr-buttons--center"><a class="mbr-buttons__btn btn btn-lg btn-danger animated fadeInUp delay mbr-editable-button" ui-sref="home.login">Log In</a> <a class="mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay mbr-editable-button" ui-sref="home.login">Join</a></div>
+                            <br>
+                            <br>
+                        </div>
+                        <div ng-if="details.similarPropertyFound" class="mbr-header mbr-header--auto-align mbr-header--wysiwyg">
+                            <h3 class="mbr-header__text mbr-editable-content" style="font-family: Roboto, sans-serif;">Yayy... <br><br></h3>
+                            <br>
+                            <p class="mbr-hero__subtext mbr-editable-content" style="color: rgb(255, 255, 255);">
+                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>&nbsp;&nbsp;You could reduce your appraised value by as much as ${{ details.appraisedValue | number:0 }}<br><br>
+                                <span class="glyphicon glyphicon-thumbs-up" aria-hidden="true"></span>&nbsp;&nbsp;We found {{ details.row }} similar homes at lower appraisal rate to help your protest<br><br></p>
+                                <p ng-if="details.HomeStead_Alert == 1" class="mbr-hero__subtext mbr-editable-content" style="color: rgb(255, 255, 255);">
+                                    <span class="glyphicon glyphicon-exclamation-sign"  aria-hidden="true"></span>&nbsp;&nbsp;Your appraisal increased by more than 10%. Please confirm homestead exemption<br><br>Please log in to get your free report&nbsp;<br></p>
+                            <div class="mbr-buttons btn-inverse mbr-buttons--center"><a class="mbr-buttons__btn btn btn-lg btn-danger animated fadeInUp delay mbr-editable-button" ui-sref="home.login">Log In</a> <a class="mbr-buttons__btn btn btn-lg btn-default animated fadeInUp delay mbr-editable-button" ui-sref="home.login">Join</a></div>
+                            <br>
+                            <br>
+                        </div>
+                    </div>
+                </div>
+                <div class="mbr-box__magnet mbr-box__magnet--top-left mbr-section__right col-sm-4">
+                    <div class="mbr-section__container">
+                        <figure class="mbr-figure mbr-figure--wysiwyg mbr-figure--full-width mbr-figure--caption-outside-bottom">
+    <div class="mbr-figure__map"><iframe ng-if="details.PropertyDetail.Situs" frameborder="0" style="border:0" ng-src="{{details.PropertyDetail.Situs}}" allowfullscreen=""></iframe></div>
+</figure>
+                </div>
+            </div>
+        </div>
+    </div>
+
+</section></div>
+
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" id="features1-1h" style="background-color: rgb(160,160,160   );">
+    
+    
+    <div  ng-show="countyAppealAvailable"  class="mbr-section__container container mbr-section__container--std-top-padding" style="padding-top: 50px;">
+        
+        <div class="row">
+                <div class="col-sm-12">
+                    <h2  class="mbr-section__header" style="color: rgb(64, 64, 64);"> {{ details.NbhdDesc_drvd }} Appeals Statistics </h2>
+                    <br><br>
+            </div>
+        </div>
+        <div class="mbr-section__row row">
+            <div class="mbr-section__col col-xs-12 col-sm-4">
+                <div class="mbr-section__container mbr-section__container--center mbr-section__container--middle">
+                    <div id="container"></div>
+                </div>
+                <div class="mbr-section__container mbr-section__container--middle">
+                    <div class="mbr-header mbr-header--reduce mbr-header--center mbr-header--wysiwyg">
+
+                    </div>
+                </div>
+                <div class="mbr-section__container mbr-section__container--last" style="padding-bottom: 93px;">
+                    <div class="mbr-article mbr-article--wysiwyg">
+                        <p></p>
+                    </div>
+                </div>
+                
+            </div>
+            <div class="mbr-section__col col-xs-12 col-sm-4">
+                <div class="mbr-section__container mbr-section__container--center mbr-section__container--middle">
+                    <div id="container2"></div>
+                </div>
+                <div class="mbr-section__container mbr-section__container--middle">
+                    <div class="mbr-header mbr-header--reduce mbr-header--center mbr-header--wysiwyg">
+                    </div>
+                </div>
+                <div class="mbr-section__container mbr-section__container--last" style="padding-bottom: 93px;">
+                    <div class="mbr-article mbr-article--wysiwyg">
+                        <p></p>
+                    </div>
+                </div>
+                
+            </div>
+            
+            <div class="mbr-section__col col-xs-12 col-sm-4">
+                <div class="mbr-section__container mbr-section__container--center mbr-section__container--middle">
+                    <div id="container3"></div>
+                </div>
+                <div class="mbr-section__container mbr-section__container--middle">
+                    <div class="mbr-header mbr-header--reduce mbr-header--center mbr-header--wysiwyg">
+                    </div>
+                </div>
+                <div class="mbr-section__container mbr-section__container--last" style="padding-bottom: 93px;">
+                    <div class="mbr-article mbr-article--wysiwyg">
+                        <p></p>
+                    </div>
+                </div>
+                
+            </div>
+        </div>
+    </div>
+</section>
+
+<div class="loading active">
+    <div class="img">
+        <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+  <path opacity="0.2" fill="#fff" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+    s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+    c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
+  <path fill="#fff" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+    C22.32,8.481,24.301,9.057,26.013,10.047z" transform="rotate(36 20 20)">
+    <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
+    </path>
+  </svg>
+    </div>
+</div>

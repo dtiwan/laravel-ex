@@ -1,0 +1,205 @@
+<section class="engine"><a rel="external" href="appraisalguru.io">Mobirise Web Site Creator</a>
+    
+    </section>
+<div ng-if="!report.similarPropertyFound" class="PropertyFoundpadding">
+    <div class="container">
+        <h4 class="propertyNofound">Sorry! It seems like you are one of the lowest appraised property amongst similar properties in your neighborhood and would not have much of a case to protest.</h4>
+    </div>
+</div>
+<div ng-if="report.similarPropertyFound">
+<section class="mbr-section mbr-after-navbar" style="background-color: rgb(211, 211, 211);" id="content1-2e">
+    <div class="mbr-section__container container mbr-section__container--isolated">
+        <div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+            <div class="col-sm-8 text-center">
+        <h3 class="text-center">{{ report.selectedProperty[0].situs}}</h3>
+        <br>
+        </div>
+        <div class="col-sm-2">
+        </div>
+        </div>
+    </div>  
+        <br>   
+        <br>
+        <div class="row">
+            <div class="mbr-article mbr-article--wysiwyg col-sm-8 col-sm-offset-2"><p>Thank you for using AppraisalGuru to benchmark your appraisal against similar properties. We hope you find the information useful.</p><p><br></p><ul><li>Following <strong>{{ report.row }}</strong> properties within your neighborhood are appraised at a lower rate per squarefeet.</li><li>Based on the minimum price per sqft on the identified homes <strong>(${{ report.price_persqft | number:2 }}/sqft)</strong>, {{ report.selectedProperty[0].situs.split(',')[0] }} should be appraised at <strong>${{ report.appraisedValue | number:0 }}</strong>.</li><li>You are currently appraised at <strong>${{ report.curAssessedValue | number:0 }} (${{ report.selectedProperty[0].price_persqft | number:2 }}/sqft)</strong>. Hence, your protest could potentially decrease your taxable value by as much as <strong>${{ report.savingValue | number:0 }}</strong></li><li>At your current tax-rate of <strong>{{ report.Taxrate | number:2 }}%</strong>, you could save as much as <strong>${{ report.saving | number:0 }}</strong> in annual property taxes.</li></ul><p><br></p>
+            </div>
+        </div>
+        <br>
+        <div class="row">
+            <div class="mbr-article mbr-article--wysiwyg col-sm-8 col-sm-offset-2">
+            <table>
+            <p>
+            <tr>
+                <td>Act fast. The deadline to initiate your protest is May 31, 2017. </td>
+                <td>&nbsp;</td>
+                <td id="time-countdown" style='font-weight:bold'></td>
+             </tr>
+            
+            </p>
+            </table>
+            
+        </div>
+        </div>
+    </div>
+</section>
+<section class="mbr-section table1" style="background-color: rgb(255, 255, 255); padding-top: 40px; padding-bottom: 20px;">
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+            <div class="col-sm-8 text-center">
+        <h3 class="mbr-section-title display-2 mbr-editable-content text-center">SIMILAR PROPERTIES</h3><br>
+        </div>
+        <div class="col-sm-2">
+        </div>
+        </div>
+    </div>  
+
+    <div class="container table-wrapper" data-search="true" search-text="Search:" info1-text="Showing" info2-text="entries" info3-text="(filtered from" info4-text="total entries)">
+        
+        <table class="table mbr-editable-content" cellspacing="0" width="100%">
+           <thead>
+              <tr>
+                 <th>Address</th>
+                 <th>Year<br>Built</th>
+                 <th>Sqft</th>
+                 <th>Price/Sqft</th>
+                 <th>Builder</th>
+                 <th>Land <br>value</th>
+                 <th>Floors</th>
+                 <th>Garage Area </th>
+                 <th>Covered<br>Patio</th>
+                 <th>Covered<br>Porch</th>
+                 <th>Deck</th>
+                 <th>Pool</th>
+                 <th>Fireplace</th>
+              </tr>
+           </thead>
+           <tbody>
+               <tr>
+                    <td style="background: #DCDCDC;">Your Home</td>
+                    <td style="background: #DCDCDC;">{{ report.selectedProperty[0].first_sale_date | date:"yyyy"  }}</td>
+                    <td style="background: #DCDCDC;">{{ report.selectedProperty[0].SquareFootage | number:0 }}</td>
+                    <td style="background: #DCDCDC;">{{ report.selectedProperty[0].price_persqft | number:2 }}</td>
+                    <td style="background: #DCDCDC;">{{ report.selectedProperty[0].builder }}</td>
+                    <td style="background: #DCDCDC;">{{ report.selectedProperty[0].currLandValue | number:0}}</td>
+                    <td style="background: #DCDCDC;">{{ report.selectedProperty[0].numfloors }}</td>
+                    <td style="background: #DCDCDC;">{{ report.selectedProperty[0].garage_area }}</td>
+                    <td style="background: #DCDCDC;">{{ report.selectedProperty[0].covered_patio_flag == 1 ? "Y":"N" }}</td>
+                    <td style="background: #DCDCDC;">{{ report.selectedProperty[0].covered_porch_flag == 1 ? "Y":"N" }}</td>
+                    <td style="background: #DCDCDC;">{{ report.selectedProperty[0].deck_flag == 1 ? "Y":"N" }}</td>
+                    <td style="background: #DCDCDC;">{{ report.selectedProperty[0].pool_flag == 1 ? "Y":"N" }}</td>
+                    <td style="background: #DCDCDC;">{{ report.selectedProperty[0].fireplace_flag == 1 ? "Y":"N" }}</td>
+                </tr>
+                <tr ng-repeat="i in report.similarProperty">
+                    <td>{{ i.situs.split(',')[0]}}</td>
+                    <td>{{ i.first_sale_date | date:"yyyy"  }}</td>
+                    <td>{{ i.SquareFootage | number:0 }}</td>
+                    <td>{{ i.price_persqft | number:2 }}</td>
+                    <td>{{ i.builder }}</td>
+                    <td>{{ i.currLandValue | number:0}}</td>
+                    <td>{{ i.numfloors }}</td>
+                    <td>{{ i.garage_area }}</td>
+                    <td>{{ i.covered_patio_flag == 1 ? "Y":"N" }}</td>
+                    <td>{{ i.covered_porch_flag == 1 ? "Y":"N" }}</td>
+                    <td>{{ i.deck_flag == 1 ? "Y":"N" }}</td>
+                    <td>{{ i.pool_flag == 1 ? "Y":"N" }}</td>
+                    <td>{{ i.fireplace_flag == 1 ? "Y":"N" }}</td>
+                </tr>
+           </tbody>
+        </table>
+        
+        
+    </div>
+</section>
+</div>
+<section class="mbr-section table1" style="background-color: rgb(211, 211, 211); padding-top: 40px; padding-bottom: 60px;">
+    <div class="container">
+    <div class="row">
+        <div class="col-sm-2">
+        </div>
+            <div class="col-sm-8 text-center">
+        <h3 class="mbr-section-title display-2 mbr-editable-content text-center">SAVINGS CALCULATOR</h3><br><br>
+        </div>
+        <div class="col-sm-2">
+        </div>
+        </div>
+    </div>  
+    <div class="mbr-article mbr-article--wysiwyg col-sm-8 col-sm-offset-2">
+        <p>Your tax savings compound over years. In following years you not only save taxes on the decreased amount but also prevent your future appraised value (and hence taxes) to soar exponentially. Please use the tool below to estimate tax savings over next 5 years with a successful protest.</p>
+        <br>
+        <br>
+            
+    </div>
+    
+    
+        <div class="row">
+            <div class="mbr-article mbr-article--wysiwyg col-sm-8 col-sm-offset-2">
+                <div id="chart-column" style="min-width: 400px; height: 300px; margin: 0 auto"></div>
+            </div>
+        </div>
+        <br>
+        <br>
+        <div class="row">
+        <div class="col-sm-4">
+        </div>
+            <div class="col-sm-4">
+        <div style="margin: 10px 0px 0px 0px">
+                <form oninput="output1.value=slider1.value">
+                <input type="range" name="slider1"  min="0" max="50000" value="25000"/>
+                <output name="output1" for="slider1">25000</output>
+            </form>
+            </div>
+        </div>
+        <div class="col-sm-4">
+        </div>
+        </div>
+</section>
+
+
+<div class="loading active">
+    <div class="img">
+        <svg version="1.1" id="loader-1" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink" x="0px" y="0px" width="40px" height="40px" viewBox="0 0 40 40" enable-background="new 0 0 40 40" xml:space="preserve">
+  <path opacity="0.2" fill="#fff" d="M20.201,5.169c-8.254,0-14.946,6.692-14.946,14.946c0,8.255,6.692,14.946,14.946,14.946
+    s14.946-6.691,14.946-14.946C35.146,11.861,28.455,5.169,20.201,5.169z M20.201,31.749c-6.425,0-11.634-5.208-11.634-11.634
+    c0-6.425,5.209-11.634,11.634-11.634c6.425,0,11.633,5.209,11.633,11.634C31.834,26.541,26.626,31.749,20.201,31.749z"></path>
+  <path fill="#fff" d="M26.013,10.047l1.654-2.866c-2.198-1.272-4.743-2.012-7.466-2.012h0v3.312h0
+    C22.32,8.481,24.301,9.057,26.013,10.047z" transform="rotate(36 20 20)">
+    <animateTransform attributeType="xml" attributeName="transform" type="rotate" from="0 20 20" to="360 20 20" dur="0.5s" repeatCount="indefinite"></animateTransform>
+    </path>
+  </svg>
+    </div>
+</div>
+
+<!--
+<section class="mbr-section mbr-section--relative mbr-section--fixed-size" style="background-color: rgb(239, 239, 239);">
+    
+    <div class="mbr-section__container mbr-section__container--sm-padding container" style="padding-top: 40.8px; padding-bottom: 40.8px;">
+        <div class="row">
+            <div class="col-sm-12">
+                <div class="row">
+                    <div class="col-sm-8 col-sm-offset-2" data-form-type="formoid">
+                        <div class="mbr-header mbr-header--center mbr-header--std-padding">
+                            <h2 class="mbr-header__text mbr-editable-content">GET ALERTS FOR 2018 PROTESTS</h2>
+                        </div>
+                        <div data-form-alert="true">
+                            <div class="hide" data-form-alert-success="true">Thanks for subscribing to appraisal alerts!</div>
+                        </div>
+                        <form class="mbr-form" action="https://mobirise.com/" method="post" data-form-title="GET ALERTS FOR 2018 PROTESTS">
+                            <input type="hidden" value="kO+9H9jsZaeCMaEqLr2MCK2NQi2WZ/uhpxT2UAc5BSgkP1MBm+YxH/DErsZkG6es7NJ0VDtbC3Jj1B1bIWlNNnjo1PzwwKX4w7O9d6YoRVG6W5FDarWnOVcgEs55rDDJ" data-form-email="true">
+                            <div class="mbr-form__left">
+                                <input type="email" class="form-control" name="email" required="" placeholder="Enter Your Email Address..." data-form-field="Email">
+                            </div>
+                            <div class="mbr-form__right mbr-buttons mbr-buttons--no-offset mbr-buttons--right"><button type="submit" class="mbr-buttons__btn btn btn-lg btn-danger mbr-editable-button">SUBSCRIBE</button></div>
+                        </form>
+                    </div>
+                </div>
+
+            </div>
+        </div>
+    </div>
+</section>
+-->
