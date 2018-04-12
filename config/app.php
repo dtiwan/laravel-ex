@@ -161,6 +161,7 @@ return [
         Illuminate\Translation\TranslationServiceProvider::class,
         Illuminate\Validation\ValidationServiceProvider::class,
         Illuminate\View\ViewServiceProvider::class,
+        //Illuminate\Foundation\Http\Middleware\VerifyPostSize::class,
 
         /*
          * Package Service Providers...
