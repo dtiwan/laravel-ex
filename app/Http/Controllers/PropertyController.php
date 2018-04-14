@@ -38,23 +38,23 @@ class PropertyController extends Controller
         if($row > 0){
             //$numbers = min(array_column($similarProperty, 'price_persqft'));
             $numbers = min(array_column(json_decode(json_encode($similarProperty), true), 'price_persqft'));
-            $appraisedValue = $selectedProperty[0]->{'SquareFootage'}*$numbers;
-            $curAssessedValue = $selectedProperty[0]->{'currAssessedValue'};
+            $appraisedValue = $selectedProperty[0]['SquareFootage']*$numbers;
+            $curAssessedValue = $selectedProperty[0]['currAssessedValue'];
             $savingValue =$curAssessedValue - $appraisedValue;
-            $saving = ($selectedProperty[0]->{'TotalTaxRate'}*0.01*($selectedProperty[0]->{'currAssessedValue'} - $appraisedValue));
+            $saving = ($selectedProperty[0]['TotalTaxRate']*0.01*($selectedProperty[0]['currAssessedValue'] - $appraisedValue));
 
 
             return response()->json(array(
                 'similarPropertyFound'=> true,
                 'row' => $row,
-                'Taxrate' => $selectedProperty[0]->{'TotalTaxRate'},
+                'Taxrate' => $selectedProperty[0]['TotalTaxRate'],
                 'appraisedValue'=> $appraisedValue,
                 'curAssessedValue'=> $curAssessedValue,
                 'price_persqft' =>$numbers,
                 'saving' => $saving,
                 'savingValue' => $savingValue,
-                'HomeStead_Alert' => $selectedProperty[0]->{'HomeStead_Alert'},
-                'NbhdDesc_drvd' => $selectedProperty[0]->{'NbhdDesc_drvd'}, 
+                'HomeStead_Alert' => $selectedProperty[0]['HomeStead_Alert'],
+                'NbhdDesc_drvd' => $selectedProperty[0]['NbhdDesc_drvd'], 
                 'selectedProperty' => $selectedProperty,
                 'similarProperty'=> $similarProperty,
             )); 
