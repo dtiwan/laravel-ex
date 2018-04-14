@@ -4,10 +4,13 @@ namespace App\Http\Controllers\Auth;
 
 use App\Http\Controllers\Controller;
 use App\User;
-use Illuminate\Foundation\Auth\SendsPasswordResetEmails;
 use Illuminate\Http\Request;
-use Illuminate\Notifications\Messages\MailMessage;
 use Mail;
+
+use Password;
+use Illuminate\Contracts\Auth\Guard;
+use Illuminate\Contracts\Auth\PasswordBroker;
+use Illuminate\Foundation\Auth\ResetsPasswords;
 
 class ForgotPasswordController extends Controller
 {
@@ -22,7 +25,7 @@ class ForgotPasswordController extends Controller
     |
     */
 
-    use SendsPasswordResetEmails;
+    use ResetsPasswords;
 
     public function getResetToken(Request $request)
     {
@@ -35,7 +38,8 @@ class ForgotPasswordController extends Controller
         if (!$user) {
             return response()->json(array('error' => 'email address not found'), 404);
         }
-        $token = $this->broker()->createToken($user);
+        
+        $token = Password::broker($this->getBroker())->createToken($user);
 
         $email = $request->{'email'};
 
