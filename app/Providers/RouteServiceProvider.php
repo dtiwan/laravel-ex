@@ -43,22 +43,22 @@ class RouteServiceProvider extends ServiceProvider
 
         /*
         |--------------------------------------------------------------------------
-        | Web Router 
-        |--------------------------------------------------------------------------
-        */
-
-        $router->group(['namespace' => $this->webnamespace], function ($router) {
-            require base_path('routes/web.php');
-        });
-
-        /*
-        |--------------------------------------------------------------------------
         | Api Router 
         |--------------------------------------------------------------------------
         */
 
-        $router->group(['namespace' => $this->apinamespace], function ($router) {
+        $router->group(['namespace' => $this->namespace, 'middleware' => 'api', 'prefix' => 'api'], function ($router) {
             require base_path('routes/api.php');
+        });
+
+        /*
+        |--------------------------------------------------------------------------
+        | Web Router 
+        |--------------------------------------------------------------------------
+        */
+
+        $router->group(['namespace' => $this->namespace, 'middleware' => 'web'], function ($router) {
+            require base_path('routes/web.php');
         });
     }
 
@@ -73,7 +73,7 @@ class RouteServiceProvider extends ServiceProvider
     protected function mapRoutes(Router $router)
     {
         $router->group([
-            'namespace' => $this->namespace, 'middleware' => 'web',
+            'namespace' => $this->namespace, 'middleware' => 'web',  
         ], function ($router) {
             require app_path('Http/routes.php');
         });

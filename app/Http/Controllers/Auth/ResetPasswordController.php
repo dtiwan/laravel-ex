@@ -3,7 +3,6 @@
 namespace App\Http\Controllers\Auth;
 
 
-use Illuminate\Notifications\Notifiable;
 use App\Http\Controllers\Controller;
 use App\User;
 use Illuminate\Foundation\Auth\SendsPasswordResetEmails;

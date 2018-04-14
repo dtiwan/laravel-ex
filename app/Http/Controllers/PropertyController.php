@@ -137,7 +137,11 @@ class PropertyController extends Controller
         if($row > 0){
             $similarPropertyFound = true;
             $numbers = min(array_column(json_decode(json_encode($similarProperty), true), 'price_persqft'));
-            $appraisedValue =$selectedProperty[0]->{'currAssessedValue'} - $selectedProperty[0]->{'SquareFootage'}*$numbers;
+            //echo $selectedProperty ;
+            //echo ' '$selectedProperty[0] ;
+            //echo $selectedProperty[0]->{'currAssessedValue'} ;
+            //echo $selectedProperty[0]['SquareFootage'] ;
+            $appraisedValue =$selectedProperty[0]['currAssessedValue'] - $selectedProperty[0]['SquareFootage']*$numbers;
         }else{
             $similarPropertyFound = false;
             $numbers = null;
@@ -150,14 +154,14 @@ class PropertyController extends Controller
              SUM(appealed_2015)*100/COUNT( *) as ngbrhd_2015,
              SUM(appealed_2016)*100/COUNT( *) as ngbrhd_2016
             FROM property_aggregated
-            WHERE NbhdCode= '".$selectedProperty[0]->{'NbhdCode'}."'");
+            WHERE NbhdCode= '".$selectedProperty[0]['NbhdCode']."'");
 
         $County  = DB::select("SELECT
              SUM(appealed_2014)*100/COUNT(* ) as county_2014,
              SUM(appealed_2015)*100/COUNT( *) as county_2015,
              SUM(appealed_2016)*100/COUNT( *) as county_2016
             FROM property_aggregated
-            WHERE CountyCode= '".$selectedProperty[0]->{'CountyCode'}."'");
+            WHERE CountyCode= '".$selectedProperty[0]['CountyCode']."'");
 
         
     	return response()->json(array(
@@ -168,8 +172,8 @@ class PropertyController extends Controller
                 'price_persqft' =>$numbers,
                 'selectedProperty' =>$selectedProperty,
                 'similarPropertyFound' => $similarPropertyFound,
-                'HomeStead_Alert' => $selectedProperty[0]->{'HomeStead_Alert'},
-                'NbhdDesc_drvd' => $selectedProperty[0]->{'NbhdDesc_drvd'}, 
+                'HomeStead_Alert' => $selectedProperty[0]['HomeStead_Alert'],
+                'NbhdDesc_drvd' => $selectedProperty[0]['NbhdDesc_drvd'], 
                 'PropertyDetail'=>$PropertyDetail[0],
                 'AppealsVolume' =>  array(
                     'Appeals'=> $AppealRecords->count(),
